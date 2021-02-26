@@ -24,7 +24,18 @@ import glob
 import numpy as np
 
 
-dataset_paths = glob.glob("TRAINING_IMAGE/dataset_characters/**/*.jpg")
+
+path_dir_path = "TRAINING_IMAGE/khmer_dataset/**/*.jpg"
+# path_dir_path = "TRAINING_IMAGE/dataset_characters/**/*.jpg"
+model_path = 'model/khmer_segment_classes.npy'
+# model_path = 'model/license_character_classes.npy'
+json_model_path = "model/MobileNets_khmer_recognition.json"
+# json_model_path = "model/MobileNets_character_recognition.json"
+h5_model_path = "model/Khmer_segment_recognition.h5"
+# h5_model_path = "model/License_character_recognition.h5"
+
+
+dataset_paths = glob.glob(path_dir_path)
 
 
 # Arange input data and corresponding labels
@@ -52,7 +63,7 @@ labels = lb.transform(labels)
 y = to_categorical(labels)
 
 # save label file so we can use in another script
-np.save('model/license_character_classes.npy', lb.classes_)
+np.save(model_path, lb.classes_)
 
 (trainX, testX, trainY, testY) = train_test_split(X, y, test_size=0.10, stratify=y, random_state=42)
 
@@ -97,7 +108,7 @@ BATCH_SIZE = 64
 
 my_checkpointer = [
                 EarlyStopping(monitor='val_loss', patience=5, verbose=0),
-                ModelCheckpoint(filepath="model/License_character_recognition.h5", verbose=1, save_weights_only=True)
+                ModelCheckpoint(filepath=h5_model_path, verbose=1, save_weights_only=True)
                 ]
 
 result = model.fit(image_gen.flow(trainX, trainY, batch_size=BATCH_SIZE), 
@@ -107,5 +118,5 @@ result = model.fit(image_gen.flow(trainX, trainY, batch_size=BATCH_SIZE),
                    epochs=EPOCHS, callbacks=my_checkpointer)
 
 model_json = model.to_json()
-with open("model/MobileNets_character_recognition.json", "w") as json_file:
+with open(json_model_path, "w") as json_file:
   json_file.write(model_json)
