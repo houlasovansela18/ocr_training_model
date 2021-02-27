@@ -25,14 +25,14 @@ import numpy as np
 
 
 
-# path_dir_path = "TRAINING_IMAGE/khmer_dataset/**/*.jpg"
-path_dir_path = "TRAINING_IMAGE/dataset_characters/**/*.jpg"
-# model_path = 'model/khmer_segment_classes.npy'
-model_path = 'model/license_character_classes.npy'
-# json_model_path = "model/MobileNets_khmer_recognition.json"
-json_model_path = "model/MobileNets_character_recognition.json"
-# h5_model_path = "model/Khmer_segment_recognition.h5"
-h5_model_path = "model/License_character_recognition_weight.h5"
+path_dir_path = "TRAINING_IMAGE/khmer_dataset/**/*.jpg"
+# path_dir_path = "TRAINING_IMAGE/dataset_characters/**/*.jpg"
+model_path = 'model/khmer_segment_classes.npy'
+# model_path = 'model/license_character_classes.npy'
+json_model_path = "model/MobileNets_khmer_recognition.json"
+# json_model_path = "model/MobileNets_character_recognition.json"
+h5_model_path = "model/Khmer_segment_recognition.h5"
+# h5_model_path = "model/License_character_recognition_weight.h5"
 
 
 dataset_paths = glob.glob(path_dir_path)
