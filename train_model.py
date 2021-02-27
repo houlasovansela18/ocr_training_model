@@ -42,8 +42,12 @@ model_path = 'model/license_character_classes.npy'
 # json_model_path = "model/MobileNets_khmer_recognition.json"
 json_model_path = "model/MobileNets_character_recognition.json"
 # h5_model_path = "model/Khmer_segment_recognition.h5"
+<<<<<<< HEAD
 h5_model_path = "model/License_character_recognition.h5"
 >>>>>>> 5be47b6a9b7a97c0c782cda35fc58bd87d91a443
+=======
+h5_model_path = "model/License_character_recognition_weight.h5"
+>>>>>>> e0397d582ec9a71409d56c588031d1750a96eec9
 
 
 dataset_paths = glob.glob(path_dir_path)
